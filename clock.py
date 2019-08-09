@@ -2,6 +2,7 @@ from turtle import *
 from datetime import datetime
 from time import sleep
 
+title("Clock")
 bgpic('Clock_background.png')
 _prev_minute = int(datetime.now().strftime("%M"))
 
@@ -35,23 +36,30 @@ def is_changed():
         _prev_minute = _cur_minute
         return True
 
-while True:
-    clear()
-    up()
-    home()
-    down()
-    pensize(10)
-    right(get_angle('hour'))
-    forward(200)
+try:
+    while True:
+        clear()
+        up()
+        home()
+        down()
+        pensize(10)
+        right(get_angle('hour'))
+        forward(200)
 
-    up()
-    home()
-    down()
-    pensize(5)
-    right(get_angle('minute'))
-    forward(200)
+        up()
+        home()
+        down()
+        pensize(5)
+        right(get_angle('minute'))
+        forward(200)
 
-    while not is_changed():
-        sleep(1)
-        
-    update()
+        while not is_changed():
+            sleep(1)
+            
+        update()
+
+except:
+    print("Exception occured")
+
+finally:
+    bye()
